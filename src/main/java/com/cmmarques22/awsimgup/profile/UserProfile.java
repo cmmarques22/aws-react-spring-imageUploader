@@ -5,40 +5,33 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class UserProfile {
-    private UUID UserProfileId;
-    private String username;
-    private String profileImageLink; // S3key
+
+    private final UUID userProfileId;
+    private final String username;
+    private String userProfileImageLink; // S3 key
 
     public UserProfile(UUID userProfileId,
                        String username,
-                       String profileImageLink) {
-       this.UserProfileId = userProfileId;
+                       String userProfileImageLink) {
+        this.userProfileId = userProfileId;
         this.username = username;
-        this.profileImageLink = profileImageLink;
+        this.userProfileImageLink = userProfileImageLink;
     }
 
     public UUID getUserProfileId() {
-        return UserProfileId;
-    }
-
-    public void setUserProfileId(UUID userProfileId) {
-        UserProfileId = userProfileId;
+        return userProfileId;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public Optional<String> getUserProfileImageLink() {
+        return Optional.ofNullable(userProfileImageLink);
     }
 
-    public String getProfileImageLink() {
-        return profileImageLink;
-    }
-
-    public void setProfileImageLink(String profileImageLink) {
-        this.profileImageLink = profileImageLink;
+    public void setUserProfileImageLink(String userProfileImageLink) {
+        this.userProfileImageLink = userProfileImageLink;
     }
 
     @Override
@@ -46,14 +39,13 @@ public class UserProfile {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserProfile that = (UserProfile) o;
-        //can return null
-        return Objects.equals(UserProfileId, that.UserProfileId) &&
+        return Objects.equals(userProfileId, that.userProfileId) &&
                 Objects.equals(username, that.username) &&
-                Objects.equals(profileImageLink, that.profileImageLink);
+                Objects.equals(userProfileImageLink, that.userProfileImageLink);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(UserProfileId, username, profileImageLink);
+        return Objects.hash(userProfileId, username, userProfileImageLink);
     }
 }
