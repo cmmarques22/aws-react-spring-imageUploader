@@ -2,6 +2,7 @@ package com.cmmarques22.awsimgup.profile;
 
 import java.security.PrivateKey;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 public class UserProfile {
